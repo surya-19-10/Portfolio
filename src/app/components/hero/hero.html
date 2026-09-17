@@ -9,7 +9,7 @@
       </div>
       
       <h1 class="hero-title">
-        Creative Full-Stack <br>
+        Creative Full-Stack <br class="hero-br">
         <span class="gradient-text">Software Engineer</span>
       </h1>
       
@@ -53,12 +53,11 @@
 
     <span class="annotation">&#64;Transactional</span>
     <span class="keyword">public</span> <span class="class-name">JobMatchResponse</span> <span class="method-name">matchTalent</span>(<span class="class-name">TalentProfile</span> profile) {{ '{' }}
-        <span class="comment">// Match professional cinematic profiles</span>
+        <span class="comment">// Match cinematic profiles</span>
         <span class="keyword">var</span> matches = jobRepo.findMatches(profile.getSkills());
         
         <span class="keyword">return new</span> <span class="class-name">JobMatchResponse</span>(
-            profile.getId(),
-            matches,
+            profile.getId(), matches,
             <span class="class-name">MatchScoreCalculator</span>.compute(profile, matches)
         );
     {{ '}' }}
@@ -71,3 +70,4 @@
     </div>
   </div>
 </section>
+

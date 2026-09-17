@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class Contact {
   email = 'damasprakash@gmail.com';
+  githubUrl = 'https://github.com/surya-19-10/';
+  linkedinUrl = 'https://linkedin.com/in/surya-prakash-597148176';
   copySuccess = false;
 
   copyEmail() {
@@ -22,3 +24,4 @@ export class Contact {
     });
   }
 }
+

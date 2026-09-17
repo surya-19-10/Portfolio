@@ -13,7 +13,11 @@
   }
 
   @media (max-width: 480px) {
-    padding: 85px 16px 40px;
+    padding: 80px 16px 36px;
+  }
+
+  @media (max-width: 380px) {
+    padding: 75px 14px 28px;
   }
 }
 
@@ -28,7 +32,11 @@
 
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 24px;
   }
 }
 
@@ -36,6 +44,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 992px) {
     align-items: center;
@@ -45,10 +55,14 @@
 
 .badge-container {
   margin-bottom: 24px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 16px;
+  }
 }
 
 .status-badge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   background: rgba(99, 102, 241, 0.1);
@@ -62,7 +76,7 @@
   letter-spacing: 0.02em;
 
   @media (max-width: 480px) {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     padding: 5px 12px;
   }
 }
@@ -91,20 +105,32 @@ html.light-theme .status-badge {
 
 .hero-title {
   font-size: 3.8rem;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 20px;
   color: var(--text-primary);
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   @media (max-width: 992px) {
     font-size: 3rem;
   }
 
   @media (max-width: 600px) {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
   }
 
-  @media (max-width: 400px) {
-    font-size: 1.95rem;
+  @media (max-width: 480px) {
+    font-size: 1.7rem;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 1.5rem;
+  }
+
+  .gradient-text {
+    display: inline;
   }
 }
 
@@ -114,6 +140,8 @@ html.light-theme .status-badge {
   color: var(--text-secondary);
   margin-bottom: 36px;
   max-width: 540px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   @media (max-width: 992px) {
     margin-left: auto;
@@ -122,8 +150,9 @@ html.light-theme .status-badge {
   }
 
   @media (max-width: 480px) {
-    font-size: 0.95rem;
-    margin-bottom: 28px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
   }
 }
 
@@ -132,11 +161,14 @@ html.light-theme .status-badge {
   gap: 16px;
 
   @media (max-width: 480px) {
-    flex-direction: column;
+    gap: 10px;
     width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
 
     button {
-      width: 100%;
+      flex: 1 1 auto;
+      min-width: 135px;
       justify-content: center;
     }
   }
@@ -148,6 +180,12 @@ html.light-theme .status-badge {
     display: flex;
     align-items: center;
     gap: 8px;
+
+    @media (max-width: 480px) {
+      height: 42px;
+      padding: 0 18px;
+      font-size: 0.9rem;
+    }
   }
 }
 
@@ -157,6 +195,7 @@ html.light-theme .status-badge {
   justify-content: center;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .mock-ide {
@@ -168,6 +207,7 @@ html.light-theme .status-badge {
   font-family: 'Fira Code', monospace;
   background: var(--ide-bg);
   border: 1px solid var(--border-color);
+  box-sizing: border-box;
 }
 
 .ide-header {
@@ -177,11 +217,17 @@ html.light-theme .status-badge {
   align-items: center;
   gap: 16px;
   border-bottom: 1px solid var(--border-color);
+
+  @media (max-width: 480px) {
+    padding: 10px 12px;
+    gap: 10px;
+  }
 }
 
 .ide-dots {
   display: flex;
   gap: 6px;
+  flex-shrink: 0;
   
   .dot {
     width: 10px;
@@ -204,12 +250,21 @@ html.light-theme .status-badge {
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   color: #f8fafc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: 480px) {
+    padding: 4px 8px;
+    font-size: 0.74rem;
+  }
   
   .tab-icon {
     font-size: 14px;
     height: 14px;
     width: 14px;
     color: #eab308;
+    flex-shrink: 0;
   }
 }
 
@@ -219,14 +274,24 @@ html.light-theme .status-badge {
   line-height: 1.5;
   color: #cbd5e1;
   overflow-x: auto;
+  box-sizing: border-box;
 
   @media (max-width: 480px) {
-    padding: 14px;
-    font-size: 0.75rem;
+    padding: 12px;
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+
+  @media (max-width: 380px) {
+    padding: 10px;
+    font-size: 0.68rem;
   }
   
   pre {
     margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
   
   code {
@@ -262,3 +327,4 @@ html.light-theme .status-badge {
     background: rgba(20, 184, 166, 0.15);
   }
 }
+
