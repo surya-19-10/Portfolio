@@ -1,0 +1,78 @@
+<mat-toolbar [ngClass]="{'scrolled': isScrolled, 'mobile-open': isMobileMenuOpen}" class="glass-nav navbar">
+  <div class="nav-container">
+    <div class="logo" (click)="scrollTo('hero')" id="nav-logo">
+      <span class="logo-accent">&lt;</span><span class="logo-text">Dama Surya Prakash</span><span class="logo-accent">/&gt;</span>
+    </div>
+
+    <!-- Desktop Nav Links -->
+    <div class="nav-links desktop-only">
+      <button mat-button (click)="scrollTo('hero')" [ngClass]="{'active': activeSection === 'hero'}"
+        id="nav-link-hero">Home</button>
+      <button mat-button (click)="scrollTo('experience')" [ngClass]="{'active': activeSection === 'experience'}"
+        id="nav-link-experience">Experience</button>
+      <button mat-button (click)="scrollTo('education')" [ngClass]="{'active': activeSection === 'education'}"
+        id="nav-link-education">Education</button>
+      <button mat-button (click)="scrollTo('projects')" [ngClass]="{'active': activeSection === 'projects'}"
+        id="nav-link-projects">Projects</button>
+      <button mat-button (click)="scrollTo('skills')" [ngClass]="{'active': activeSection === 'skills'}"
+        id="nav-link-skills">Skills</button>
+      <button mat-button (click)="scrollTo('contact')" [ngClass]="{'active': activeSection === 'contact'}"
+        id="nav-link-contact">Contact</button>
+    </div>
+
+    <!-- Desktop Actions -->
+    <div class="nav-cta desktop-only">
+      <button mat-icon-button class="theme-toggle-btn" (click)="toggleTheme()" aria-label="Toggle Theme" id="nav-theme-toggle">
+        <mat-icon>{{ themeService.currentTheme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+      <button mat-raised-button class="glow-btn" (click)="scrollTo('contact')" id="nav-btn-hire">Hire Me</button>
+    </div>
+
+    <!-- Mobile Header Actions & Menu Toggle -->
+    <div class="mobile-nav-actions mobile-only">
+      <button mat-icon-button class="theme-toggle-btn" (click)="toggleTheme()" aria-label="Toggle Theme" id="nav-theme-toggle-mobile">
+        <mat-icon>{{ themeService.currentTheme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+      <button mat-icon-button class="mobile-menu-toggle" (click)="toggleMobileMenu()" aria-label="Toggle Navigation Menu" id="nav-menu-toggle">
+        <mat-icon>{{ isMobileMenuOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-nav-drawer" [ngClass]="{'open': isMobileMenuOpen}">
+    <div class="mobile-drawer-links">
+      <button mat-button (click)="scrollTo('hero')" [ngClass]="{'active': activeSection === 'hero'}">
+        <mat-icon class="drawer-icon">home</mat-icon>
+        Home
+      </button>
+      <button mat-button (click)="scrollTo('experience')" [ngClass]="{'active': activeSection === 'experience'}">
+        <mat-icon class="drawer-icon">work</mat-icon>
+        Experience
+      </button>
+      <button mat-button (click)="scrollTo('education')" [ngClass]="{'active': activeSection === 'education'}">
+        <mat-icon class="drawer-icon">school</mat-icon>
+        Education
+      </button>
+      <button mat-button (click)="scrollTo('projects')" [ngClass]="{'active': activeSection === 'projects'}">
+        <mat-icon class="drawer-icon">folder_special</mat-icon>
+        Projects
+      </button>
+      <button mat-button (click)="scrollTo('skills')" [ngClass]="{'active': activeSection === 'skills'}">
+        <mat-icon class="drawer-icon">psychology</mat-icon>
+        Skills
+      </button>
+      <button mat-button (click)="scrollTo('contact')" [ngClass]="{'active': activeSection === 'contact'}">
+        <mat-icon class="drawer-icon">mail</mat-icon>
+        Contact
+      </button>
+    </div>
+
+    <div class="mobile-drawer-footer">
+      <button mat-raised-button class="glow-btn mobile-hire-btn" (click)="scrollTo('contact')">Hire Me</button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<!-- Backdrop overlay for mobile menu -->
+<div class="mobile-nav-backdrop" *ngIf="isMobileMenuOpen" (click)="closeMobileMenu()"></div>

@@ -1,0 +1,43 @@
+<section class="contact-section section-container" id="contact">
+  <div class="contact-card glass-card">
+    <div class="contact-visual-glow"></div>
+    
+    <div class="contact-info">
+      <h2>Let's connect</h2>
+      <p>I am open to technical collaborations, speaking engagements, and full-stack software engineering opportunities.</p>
+    </div>
+    
+    <div class="contact-actions">
+      <!-- Copy Email Area -->
+      <div class="email-copy-box" (click)="copyEmail()" id="contact-email-box" title="Click to copy email">
+        <div class="email-details">
+          <span class="email-label">Direct Email</span>
+          <span class="email-address">{{ email }}</span>
+        </div>
+        <div class="copy-icon-box">
+          <mat-icon>{{ copySuccess ? 'check_circle' : 'content_copy' }}</mat-icon>
+        </div>
+        <span class="tooltip" [ngClass]="{'visible': copySuccess}">Copied to Clipboard!</span>
+      </div>
+
+      <!-- External Links -->
+      <div class="social-grid">
+        <a href="https://github.com" target="_blank" class="social-card github" id="social-github-link">
+          <mat-icon class="social-icon">terminal</mat-icon>
+          <div class="social-info">
+            <span class="social-name">GitHub</span>
+            <span class="social-handle">&#64;developer</span>
+          </div>
+        </a>
+        
+        <a href="https://linkedin.com" target="_blank" class="social-card linkedin" id="social-linkedin-link">
+          <mat-icon class="social-icon">badge</mat-icon>
+          <div class="social-info">
+            <span class="social-name">LinkedIn</span>
+            <span class="social-handle">Professional Network</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

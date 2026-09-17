@@ -1,0 +1,231 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--bg-nav);
+  border-bottom: 1px solid var(--border-color);
+  
+  &.scrolled {
+    height: 65px;
+    background: var(--bg-nav-scrolled);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+  }
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
+
+.logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: -0.03em;
+  user-select: none;
+  
+  .logo-text {
+    color: var(--text-primary);
+    margin: 0 2px;
+
+    @media (max-width: 480px) {
+      font-size: 1.15rem;
+    }
+  }
+  
+  .logo-accent {
+    color: #6366f1;
+    transition: color 0.3s ease;
+  }
+  
+  &:hover .logo-accent {
+    color: #14b8a6;
+  }
+}
+
+.desktop-only {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 840px) {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  display: none;
+
+  @media (max-width: 840px) {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.nav-links {
+  gap: 6px;
+  
+  button {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    
+    &:hover {
+      color: var(--text-primary);
+      background: var(--badge-bg);
+    }
+    
+    &.active {
+      color: var(--text-primary);
+      font-weight: 600;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+  }
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  button.glow-btn {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 0.95rem;
+  }
+}
+
+.theme-toggle-btn {
+  color: var(--text-primary);
+  transition: transform 0.3s ease, background 0.3s ease;
+
+  mat-icon {
+    font-size: 22px;
+    height: 22px;
+    width: 22px;
+    color: #fbbf24;
+  }
+
+  &:hover {
+    transform: rotate(20deg) scale(1.1);
+    background: var(--badge-bg);
+  }
+}
+
+.mobile-menu-toggle {
+  color: var(--text-primary);
+}
+
+// Mobile Nav Drawer
+.mobile-nav-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-nav-drawer);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  padding: 20px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 999;
+
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.mobile-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  button {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+
+    .drawer-icon {
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+      color: #6366f1;
+    }
+
+    &:hover, &.active {
+      color: var(--text-primary);
+      background: rgba(99, 102, 241, 0.12);
+      .drawer-icon {
+        color: #14b8a6;
+      }
+    }
+  }
+}
+
+.mobile-drawer-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+
+  .mobile-hire-btn {
+    width: 100%;
+    height: 44px;
+  }
+}
+
+.mobile-nav-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+}

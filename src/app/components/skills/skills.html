@@ -1,0 +1,25 @@
+<section class="skills-section section-container" id="skills">
+  <div class="section-header">
+    <h2>Technical Proficiency</h2>
+    <p>My development toolbox of frontend frameworks, backend technologies, databases, and workflow practices.</p>
+  </div>
+
+  <div class="skills-grid">
+    <mat-card class="category-card glass-card" *ngFor="let category of categories">
+      <mat-card-header class="category-header">
+        <div class="category-icon-box">
+          <mat-icon>{{ category.icon }}</mat-icon>
+        </div>
+        <h3 class="category-title">{{ category.title }}</h3>
+      </mat-card-header>
+      
+      <mat-card-content class="category-content">
+        <div class="skills-container">
+          <span class="skill-badge-card" *ngFor="let skill of category.skills">
+            {{ skill }}
+          </span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

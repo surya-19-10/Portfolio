@@ -1,0 +1,48 @@
+<section class="experience-section section-container" id="experience">
+  <div class="section-header">
+    <h2>Professional Experience</h2>
+    <p>A timeline of my professional journey and enterprise software engineering achievements.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-line"></div>
+    
+    <div class="timeline-item" *ngFor="let job of jobs" [ngClass]="{'current-job': job.isCurrent}">
+      <!-- Timeline Node -->
+      <div class="timeline-node">
+        <div class="node-glow"></div>
+        <mat-icon>{{ job.isCurrent ? 'auto_awesome' : 'work' }}</mat-icon>
+      </div>
+
+      <!-- Timeline Card -->
+      <mat-card class="timeline-card glass-card">
+        <mat-card-header>
+          <div class="card-title-area">
+            <h3 class="role-title">{{ job.role }}</h3>
+            <span class="company-name">
+              {{ job.company }}
+              <span class="job-meta-divider" *ngIf="job.project || job.location">|</span>
+              <span class="job-project" *ngIf="job.project">Project: {{ job.project }}</span>
+              <span class="job-location" *ngIf="job.location">({{ job.location }})</span>
+            </span>
+          </div>
+          <span class="job-duration">{{ job.duration }}</span>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <ul class="highlights-list">
+            <li *ngFor="let highlight of job.highlights">
+              {{ highlight }}
+            </li>
+          </ul>
+          
+          <div class="job-skills">
+            <span class="skill-badge" *ngFor="let skill of job.skills">
+              {{ skill }}
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>

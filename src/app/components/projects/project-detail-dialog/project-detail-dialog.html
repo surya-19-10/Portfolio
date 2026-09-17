@@ -1,0 +1,63 @@
+<h2 mat-dialog-title class="dialog-header">
+  <div class="dialog-header-text">
+    <span class="dialog-title">{{ data.title }} Case Study</span>
+    <span class="dialog-subtitle" *ngIf="data.category || data.duration">{{ data.category }} {{ data.duration ? '• ' + data.duration : '' }} {{ data.location ? '• ' + data.location : '' }}</span>
+  </div>
+  <button mat-icon-button (click)="close()" class="close-btn" aria-label="Close dialog" id="btn-dialog-close">
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  <div class="dialog-section">
+    <h3>Overview</h3>
+    <p class="long-desc">{{ data.longDescription }}</p>
+  </div>
+
+  <div class="dialog-section">
+    <h3>Key Features</h3>
+    <ul class="features-list">
+      <li *ngFor="let feature of data.features">{{ feature }}</li>
+    </ul>
+  </div>
+
+  <div class="dialog-section">
+    <h3>Architecture Breakdown</h3>
+    <div class="arch-grid">
+      <div class="arch-card">
+        <div class="arch-header">
+          <mat-icon class="arch-icon">desktop_windows</mat-icon>
+          <h4>Frontend</h4>
+        </div>
+        <p>{{ data.architecture.frontend }}</p>
+      </div>
+      
+      <div class="arch-card">
+        <div class="arch-header">
+          <mat-icon class="arch-icon">dns</mat-icon>
+          <h4>Backend</h4>
+        </div>
+        <p>{{ data.architecture.backend }}</p>
+      </div>
+      
+      <div class="arch-card">
+        <div class="arch-header">
+          <mat-icon class="arch-icon">storage</mat-icon>
+          <h4>Database & Infrastructure</h4>
+        </div>
+        <p>{{ data.architecture.database }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-section">
+    <h3>Technologies Utilized</h3>
+    <div class="tech-chips">
+      <span class="tech-chip" *ngFor="let tech of data.techStack">{{ tech }}</span>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-raised-button class="glow-btn" (click)="close()" id="btn-dialog-footer-close">Close Case Study</button>
+</mat-dialog-actions>

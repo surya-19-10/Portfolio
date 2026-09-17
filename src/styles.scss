@@ -1,0 +1,319 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// Define a premium Material 3 theme
+$portfolio-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$violet-palette,
+    tertiary: mat.$cyan-palette,
+    use-system-variables: true
+  ),
+  typography: (
+    brand-family: 'Outfit, sans-serif',
+    plain-family: 'Inter, sans-serif',
+  )
+));
+
+// Root theme variables
+:root {
+  --bg-primary: #08090c;
+  --bg-surface: rgba(20, 22, 31, 0.6);
+  --bg-surface-solid: #0d0e12;
+  --bg-card-hover: rgba(20, 22, 31, 0.85);
+  --bg-nav: rgba(8, 9, 12, 0.7);
+  --bg-nav-scrolled: rgba(8, 9, 12, 0.85);
+  --bg-nav-drawer: rgba(13, 14, 18, 0.96);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-bright: #f8fafc;
+  --text-body: #cbd5e1;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --border-color-hover: rgba(99, 102, 241, 0.25);
+  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --badge-bg: rgba(255, 255, 255, 0.03);
+  --badge-border: rgba(255, 255, 255, 0.08);
+  --glow-1: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(0,0,0,0) 70%);
+  --glow-2: radial-gradient(circle, rgba(20, 184, 166, 0.08) 0%, rgba(0,0,0,0) 70%);
+  --ide-bg: rgba(13, 14, 18, 0.85);
+  --ide-header: rgba(20, 22, 31, 0.9);
+  --ide-tab-bg: #08090c;
+  --dialog-bg: #0d0e12;
+  --dialog-header-bg: rgba(20, 22, 31, 0.75);
+}
+
+html.light-theme {
+  --bg-primary: #f8fafc;
+  --bg-surface: rgba(255, 255, 255, 0.85);
+  --bg-surface-solid: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-nav: rgba(248, 250, 252, 0.85);
+  --bg-nav-scrolled: rgba(255, 255, 255, 0.95);
+  --bg-nav-drawer: rgba(255, 255, 255, 0.98);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-bright: #020617;
+  --text-body: #334155;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color-hover: rgba(99, 102, 241, 0.35);
+  --card-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.06);
+  --badge-bg: rgba(99, 102, 241, 0.06);
+  --badge-border: rgba(99, 102, 241, 0.15);
+  --glow-1: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(255,255,255,0) 70%);
+  --glow-2: radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, rgba(255,255,255,0) 70%);
+  --ide-bg: #1e293b;
+  --ide-header: #0f172a;
+  --ide-tab-bg: #1e293b;
+  --dialog-bg: #ffffff;
+  --dialog-header-bg: #f1f5f9;
+}
+
+html {
+  @include mat.theme($portfolio-theme);
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+  overflow-x: hidden;
+  min-height: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Typography headings matching Outfit font family
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  color: var(--text-primary);
+}
+
+// Selection colors
+::selection {
+  background-color: rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 5px;
+  border: 2px solid var(--bg-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+// Global Custom Utilities for Premium Aesthetics
+.gradient-text {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 50%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+html.light-theme .gradient-text {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 50%, #0d9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-alt {
+  background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.glass-card {
+  background: var(--bg-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-color-hover);
+    box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15);
+  }
+}
+
+.glass-nav {
+  background: var(--bg-nav);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.glow-btn {
+  position: relative;
+  overflow: hidden !important;
+  border-radius: 50px !important;
+  --mdc-button-container-shape: 50px !important;
+  --mat-button-container-shape: 50px !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  z-index: 1;
+  color: #ffffff !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6366f1, #14b8a6);
+    opacity: 0.9;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.glow-btn-outline {
+  background: transparent;
+  color: var(--text-primary) !important;
+  border: 1.5px solid rgba(99, 102, 241, 0.5) !important;
+  border-radius: 50px !important;
+  --mdc-button-container-shape: 50px !important;
+  --mat-button-container-shape: 50px !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: #6366f1 !important;
+    transform: translateY(-2px);
+  }
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 24px;
+
+  @media (max-width: 768px) {
+    padding: 60px 16px;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 36px;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    position: relative;
+    display: inline-block;
+    color: var(--text-primary);
+    
+    @media (max-width: 768px) {
+      font-size: 1.95rem;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #6366f1, #14b8a6);
+      border-radius: 2px;
+    }
+  }
+
+  p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Background decorative glow shapes
+.bg-glow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-glow-1 {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: var(--glow-1);
+  filter: blur(80px);
+}
+
+.bg-glow-2 {
+  position: absolute;
+  bottom: 10%;
+  left: -10%;
+  width: 45vw;
+  height: 45vw;
+  border-radius: 50%;
+  background: var(--glow-2);
+  filter: blur(80px);
+}
+
+// Custom Material Dialog Overlay styling for Light & Dark mode
+.custom-dialog-container .mat-mdc-dialog-container .mdc-dialog__surface {
+  background: var(--dialog-bg) !important;
+  color: var(--text-body) !important;
+  border-radius: 16px !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--card-shadow) !important;
+}

@@ -1,0 +1,42 @@
+<section class="projects-section section-container" id="projects">
+  <div class="section-header">
+    <h2>Featured Projects</h2>
+    <p>A deep dive into recent case studies, application architectures, and engineered solutions.</p>
+  </div>
+
+  <div class="projects-grid">
+    <mat-card class="project-card glass-card" *ngFor="let project of projects">
+      <div class="project-visual">
+        <div class="visual-pattern"></div>
+        <span class="project-badge" *ngIf="project.category">{{ project.category }}</span>
+        <div class="project-icon-box">
+          <mat-icon>{{ project.title === 'Caplink' ? 'account_balance' : (project.title === 'CineConnect' ? 'movie_filter' : 'monitoring') }}</mat-icon>
+        </div>
+      </div>
+      
+      <mat-card-header class="project-card-header">
+        <h3 class="project-title">{{ project.title }}</h3>
+      </mat-card-header>
+
+      <mat-card-content class="project-card-content">
+        <p class="project-desc">{{ project.description }}</p>
+        
+        <div class="project-tags">
+          <span class="tech-tag" *ngFor="let tag of project.techStack.slice(0, 4)">
+            {{ tag }}
+          </span>
+          <span class="tech-tag-more" *ngIf="project.techStack.length > 4">
+            +{{ project.techStack.length - 4 }} More
+          </span>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions class="project-card-actions">
+        <button mat-raised-button class="glow-btn-outline cs-btn" (click)="openCaseStudy(project)">
+          View Case Study
+          <mat-icon class="btn-icon">open_in_new</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>

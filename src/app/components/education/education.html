@@ -1,0 +1,29 @@
+<section class="education-section section-container" id="education">
+  <div class="section-header">
+    <h2>Education</h2>
+    <p>My academic foundation in engineering and technology.</p>
+  </div>
+
+  <div class="education-container">
+    <mat-card class="education-card glass-card" *ngFor="let item of educationList">
+      <mat-card-header class="education-card-header">
+        <div class="education-icon-box">
+          <mat-icon>school</mat-icon>
+        </div>
+        <div class="education-title-area">
+          <h3 class="institution-name">{{ item.institution }}</h3>
+          <span class="degree-title">{{ item.degree }}</span>
+        </div>
+        <span class="duration-badge">{{ item.duration }}</span>
+      </mat-card-header>
+
+      <mat-card-content class="education-card-content">
+        <div class="grade-info">
+          <mat-icon class="award-icon">workspace_premium</mat-icon>
+          <span class="grade-label">Academic Achievement:</span>
+          <span class="grade-value">{{ item.grade }}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

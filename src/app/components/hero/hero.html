@@ -1,0 +1,73 @@
+<section class="hero-section" id="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="badge-container">
+        <span class="status-badge">
+          <span class="status-dot"></span>
+          Available for Opportunities
+        </span>
+      </div>
+      
+      <h1 class="hero-title">
+        Creative Full-Stack <br>
+        <span class="gradient-text">Software Engineer</span>
+      </h1>
+      
+      <p class="hero-description">
+        Building high-performance, scalable microservices architectures and premium frontend interfaces. Specializing in Angular, Java, Spring Boot, and enterprise development.
+      </p>
+      
+      <div class="hero-actions">
+        <button mat-raised-button class="glow-btn" (click)="scrollTo('projects')" id="hero-btn-projects">
+          View Projects
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+        <button mat-button class="glow-btn-outline" (click)="scrollTo('contact')" id="hero-btn-contact">
+          Contact Me
+        </button>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <!-- Mock IDE Terminal Window -->
+      <div class="mock-ide glass-card">
+        <div class="ide-header">
+          <div class="ide-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="ide-tab">
+            <mat-icon class="tab-icon">code</mat-icon>
+            <span>CineConnectService.java</span>
+          </div>
+        </div>
+        <div class="ide-content">
+          <pre><code><span class="keyword">package</span> com.cineconnect.service;
+
+<span class="annotation">&#64;Service</span>
+<span class="keyword">public class</span> <span class="class-name">CineConnectService</span> {{ '{' }}
+
+    <span class="annotation">&#64;Autowired</span>
+    <span class="keyword">private</span> <span class="class-name">JobRepository</span> jobRepo;
+
+    <span class="annotation">&#64;Transactional</span>
+    <span class="keyword">public</span> <span class="class-name">JobMatchResponse</span> <span class="method-name">matchTalent</span>(<span class="class-name">TalentProfile</span> profile) {{ '{' }}
+        <span class="comment">// Match professional cinematic profiles</span>
+        <span class="keyword">var</span> matches = jobRepo.findMatches(profile.getSkills());
+        
+        <span class="keyword">return new</span> <span class="class-name">JobMatchResponse</span>(
+            profile.getId(),
+            matches,
+            <span class="class-name">MatchScoreCalculator</span>.compute(profile, matches)
+        );
+    {{ '}' }}
+{{ '}' }}</code></pre>
+        </div>
+      </div>
+      <!-- Floating decorative shapes -->
+      <div class="floating-circle circle-1"></div>
+      <div class="floating-circle circle-2"></div>
+    </div>
+  </div>
+</section>
